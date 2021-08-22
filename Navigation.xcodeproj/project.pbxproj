@@ -17,6 +17,8 @@
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		060782CA250CEE7200A87020 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
 		189DDA5E5787EF3A36A7131A /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C4E136E7C8DE08EF9964EC /* Pods_Navigation.framework */; };
+		B405A5E726B1D8B1000B95F4 /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B405A5E626B1D8B1000B95F4 /* RealmDataProvider.swift */; };
+		B405A5EE26B1DECB000B95F4 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B405A5ED26B1DECB000B95F4 /* UserData.swift */; };
 		B4158D27267B8F0A0085A486 /* NameResidents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4158D26267B8F0A0085A486 /* NameResidents.swift */; };
 		B4158D3A267BE8E80085A486 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4158D39267BE8E80085A486 /* GoogleService-Info.plist */; };
 		B42E4FAF26305B580025A4EF /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E4FAE26305B580025A4EF /* LoginInspector.swift */; };
@@ -61,6 +63,8 @@
 		14E02749ED4693F9054EA597 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		29936D05CFA8E79BBBEBA7AF /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		75C4E136E7C8DE08EF9964EC /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B405A5E626B1D8B1000B95F4 /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
+		B405A5ED26B1DECB000B95F4 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B4158D26267B8F0A0085A486 /* NameResidents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameResidents.swift; sourceTree = "<group>"; };
 		B4158D39267BE8E80085A486 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B42E4FAE26305B580025A4EF /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -150,6 +154,15 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		B417269326B2951800B346BD /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B405A5E626B1D8B1000B95F4 /* RealmDataProvider.swift */,
+				B405A5ED26B1DECB000B95F4 /* UserData.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		B42E4FB326307E9D0025A4EF /* HomeWorkCreateNavigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 			children = (
 				B42E4FAE26305B580025A4EF /* LoginInspector.swift */,
 				B42E4FCC2632CE950025A4EF /* ViewPresenter.swift */,
+				B417269326B2951800B346BD /* Realm */,
 				B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */,
 			);
 			path = Login;
@@ -340,6 +354,7 @@
 				B4AC3FCD267654EF001D2E4A /* NetworkManager.swift in Sources */,
 				B4AC3FC826763F1F001D2E4A /* NetworkService.swift in Sources */,
 				B45943DE25E2D3F9006B9345 /* PhotosTableViewCell.swift in Sources */,
+				B405A5E726B1D8B1000B95F4 /* RealmDataProvider.swift in Sources */,
 				B44C19C126A4821500EED502 /* CoreDataStack.swift in Sources */,
 				B42E4FCD2632CE950025A4EF /* ViewPresenter.swift in Sources */,
 				B45943E425E2D400006B9345 /* GallaryPhotosUINavigationController.swift in Sources */,
@@ -358,6 +373,7 @@
 				B4F08EE525DA7CED0061AE32 /* LogInViewController.swift in Sources */,
 				B45943EA25E2D406006B9345 /* CallPhotosCell.swift in Sources */,
 				B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */,
+				B405A5EE26B1DECB000B95F4 /* UserData.swift in Sources */,
 				B42E4FC72631703A0025A4EF /* Coordinator.swift in Sources */,
 				B4F08EE225DA7CED0061AE32 /* ProfileHeaderForSectionOne.swift in Sources */,
 				B42E4FB826307EF90025A4EF /* ContainerView.swift in Sources */,

@@ -1,14 +1,8 @@
 
-
-
-
-
-
-
 import UIKit
 
 class LogInViewController: UIViewController {
-    
+        
     var outPut: LoginViewControllerDelegate?
     
     var image: UIImageView = {
@@ -39,6 +33,7 @@ class LogInViewController: UIViewController {
         outPut?.logIn = {
             if self.outPut?.currenUser != nil {
                 self.showButtonOut()
+                self.switcher = true
         }
         }
     }
@@ -73,6 +68,7 @@ class LogInViewController: UIViewController {
     @objc func signOut () {
         outPut?.signOut()
         buttonOut.removeFromSuperview()
+        switcher = false
     }
     
     var stack: UIStackView = {
@@ -134,6 +130,7 @@ class LogInViewController: UIViewController {
             buyButton.isHidden = false
         }
     }
+    
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.toAutoLayout()
@@ -146,10 +143,26 @@ class LogInViewController: UIViewController {
         return sv
     }()
     
+    var switcher: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
+        
+        if switcher != false {
+            let models = outPut?.realmDataProvider?.obtains()
+           
+            textfieldOne.text = models?.last?.password
+            textfieldTwo.text = models?.last?.login
+            
+            outPut?.email = textfieldTwo.text
+            outPut?.pswd = textfieldOne.text
+            
+        } else {
+            textfieldOne.text = " "
+            textfieldTwo.text = " "
+        }
+       
+        
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
