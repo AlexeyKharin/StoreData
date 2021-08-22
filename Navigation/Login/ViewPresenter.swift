@@ -1,16 +1,11 @@
 
-
-
-
-
-
-
-
 import Foundation
 import UIKit
 import FirebaseAuth
 
 protocol LoginViewControllerDelegate {
+    
+    var realmDataProvider: DataProvider? { get set }
     
     func show()
     
@@ -29,6 +24,8 @@ protocol LoginViewControllerDelegate {
 
 class ViewPresenter: LoginViewControllerDelegate {
     
+    var realmDataProvider: DataProvider?
+    
     var logIn: (() -> Void)?
     
     var currenUser: User?
@@ -45,20 +42,31 @@ class ViewPresenter: LoginViewControllerDelegate {
     
     
     func typeEmailAndPswd() {
-
+        
         guard let pswd = pswd else { return }
         guard let email = email else { return }
-
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: pswd) { (result, error) in
+        
+            FirebaseAuth.Auth.auth().signIn(withEmail: email, password: pswd) { (result, error) in
             
             guard error == nil else {
                 self.createAccount(email: email, pswd: pswd)
                 return
             }
-            self.show()
-            self.logIn?()
-           
-        }
+            
+            let models = self.realmDataProvider?.obtains()
+            if models?.count != 0 {
+            if (models?.first(where: { $0.login == email && $0.password == pswd })) != nil {
+                if let model = models?.first(where: { $0.login == email && $0.password == pswd }) {
+                    self.realmDataProvider?.delete(object: model)
+                    self.realmDataProvider?.save(login: email, password: pswd)
+                    self.show()
+                    self.logIn?()
+                }
+            }
+            } else {
+                self.realmDataProvider?.save(login: email, password: pswd)
+            }
+    }
     }
     
     private func createAccount(email: String, pswd: String) {
@@ -71,6 +79,7 @@ class ViewPresenter: LoginViewControllerDelegate {
                     print("Аккаунт не создан")
                     return
                 }
+                self.realmDataProvider?.save(login: email, password: pswd)
                 self.currenUser = FirebaseAuth.Auth.auth().currentUser
                 print("Успешно")
             }

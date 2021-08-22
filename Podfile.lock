@@ -96,10 +96,16 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - Realm (10.11.0):
+    - Realm/Headers (= 10.11.0)
+  - Realm/Headers (10.11.0)
+  - RealmSwift (10.11.0):
+    - Realm (= 10.11.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
@@ -115,6 +121,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Firebase: 4bb49ae87756034cef870fa3c4006235eb46f475
@@ -129,7 +137,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Realm: 39ff23f0f709cd4ed93eb47ee6593c2158945b38
+  RealmSwift: 42713e09a8631070d6c12c3c5fb22b8edc1daa41
 
-PODFILE CHECKSUM: da3b5e0e0f36e81c58cca6eae9786d73d2269af6
+PODFILE CHECKSUM: c2af712d9d50ba954ee23b6bbb2ac0d3f8c9354a
 
 COCOAPODS: 1.10.1

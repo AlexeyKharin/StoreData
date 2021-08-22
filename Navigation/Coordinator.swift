@@ -1,10 +1,4 @@
-
-//  Coordinator.swift
-//  Navigation
-//
-//  Created by Alexey Kharin on 22.04.2021.
-//  Copyright © 2021 Artem Novichkov. All rights reserved.
-
+var key = Data(count: 64)
 
 import Foundation
 import UIKit
@@ -15,9 +9,13 @@ class Coordinator: NSObject {
     
     private  let postPresenter = PostPresenter()
     
+    let realmDataProvider = RealmDataProvider(key: key)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    key.withUnsafeMutableBytes { (pointer: UnsafeMutableRawBufferPointer) in SecRandomCopyBytes(kSecRandomDefault, 64, pointer.baseAddress!) }
+
         
         if let feedNavigationfirst = tabBarController.viewControllers?.first as? UINavigationController, let feedViewController = feedNavigationfirst.viewControllers.first as? FeedViewController {
             feedViewController.output = postPresenter
@@ -27,7 +25,10 @@ class Coordinator: NSObject {
         if let loginNavigation = tabBarController.viewControllers?[1] as? UINavigationController, let loginController = loginNavigation.viewControllers.last as? LogInViewController {
             let viewPresenter = ViewPresenter(navigationController: loginNavigation)
 //            viewPresenter.delegate = LoginInspector.shared
+            
+            viewPresenter.realmDataProvider = realmDataProvider
             loginController.outPut = viewPresenter
+    
         }
         
     }

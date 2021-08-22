@@ -1,14 +1,8 @@
 
-
-
-
-
-
-
 import Foundation
 
-    
 struct NetworkManager {
+    
     private static let sharedSession = URLSession.shared
     private static  let session = URLSession.shared
     private static let decoder = JSONDecoder()
@@ -18,8 +12,8 @@ struct NetworkManager {
             with: json,
             options: .mutableContainers
         ) as? [String: Any]
-    
     }
+    
     static func dataTask(
         url: URL,
         completion: @escaping (Data?) -> Void
