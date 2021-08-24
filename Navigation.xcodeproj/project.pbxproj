@@ -26,6 +26,8 @@
 		B45943E425E2D400006B9345 /* GallaryPhotosUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45943E325E2D400006B9345 /* GallaryPhotosUINavigationController.swift */; };
 		B45943E725E2D403006B9345 /* Gallary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45943E625E2D403006B9345 /* Gallary.swift */; };
 		B45943EA25E2D406006B9345 /* CallPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45943E925E2D406006B9345 /* CallPhotosCell.swift */; };
+		B4A312FA26D570F700AB2986 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A312F926D570F700AB2986 /* NetworkService.swift */; };
+		B4A312FD26D5711400AB2986 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A312FC26D5711400AB2986 /* AppConfiguration.swift */; };
 		B4F08EE225DA7CED0061AE32 /* ProfileHeaderForSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */; };
 		B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */; };
 		B4F08EE525DA7CED0061AE32 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */; };
@@ -55,6 +57,8 @@
 		B45943E325E2D400006B9345 /* GallaryPhotosUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryPhotosUINavigationController.swift; sourceTree = "<group>"; };
 		B45943E625E2D403006B9345 /* Gallary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallary.swift; sourceTree = "<group>"; };
 		B45943E925E2D406006B9345 /* CallPhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPhotosCell.swift; sourceTree = "<group>"; };
+		B4A312F926D570F700AB2986 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B4A312FC26D5711400AB2986 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderForSectionOne.swift; sourceTree = "<group>"; };
 		B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				B42E4FC62631703A0025A4EF /* Coordinator.swift */,
+				B4A312F826D5707200AB2986 /* JSON.Codable */,
 				B42E4FCF2632CE9B0025A4EF /* Login */,
 				B42E4FB326307E9D0025A4EF /* HomeWorkCreateNavigation */,
 				060782B7250CE27700A87020 /* Main.storyboard */,
@@ -127,6 +132,15 @@
 				B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B4A312F826D5707200AB2986 /* JSON.Codable */ = {
+			isa = PBXGroup;
+			children = (
+				B4A312F926D570F700AB2986 /* NetworkService.swift */,
+				B4A312FC26D5711400AB2986 /* AppConfiguration.swift */,
+			);
+			path = JSON.Codable;
 			sourceTree = "<group>";
 		};
 		B4CADAD025B6097600A84DBE /* Profile */ = {
@@ -216,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A312FA26D570F700AB2986 /* NetworkService.swift in Sources */,
 				B45943DE25E2D3F9006B9345 /* PhotosTableViewCell.swift in Sources */,
 				B42E4FCD2632CE950025A4EF /* ViewPresenter.swift in Sources */,
 				B45943E425E2D400006B9345 /* GallaryPhotosUINavigationController.swift in Sources */,
@@ -230,6 +245,7 @@
 				B45943EA25E2D406006B9345 /* CallPhotosCell.swift in Sources */,
 				B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */,
 				B42E4FC72631703A0025A4EF /* Coordinator.swift in Sources */,
+				B4A312FD26D5711400AB2986 /* AppConfiguration.swift in Sources */,
 				B4F08EE225DA7CED0061AE32 /* ProfileHeaderForSectionOne.swift in Sources */,
 				B42E4FB826307EF90025A4EF /* ContainerView.swift in Sources */,
 				B45943E125E2D3FD006B9345 /* PhotoForGalleryCell.swift in Sources */,
