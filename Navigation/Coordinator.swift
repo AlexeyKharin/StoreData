@@ -25,7 +25,6 @@ class Coordinator: NSObject {
         
         if let loginNavigation = tabBarController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.last as? LogInViewController {
             let viewPresenter = ViewPresenter(navigationController: loginNavigation)
-            viewPresenter.delegate = LoginInspector.shared
             loginController.outPut = viewPresenter
         }
         
