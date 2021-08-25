@@ -34,7 +34,7 @@ DerivedData/
 build/
 DerivedData
 .idea/
-
+Podfile.lock
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -45,7 +45,7 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-
+.Podfile.swp
 ## Other
 *.xccheckout
 *.moved-aside
