@@ -30,12 +30,6 @@ class LogInViewController: UIViewController {
     
     @objc func press () {
      outPut?.typeEmailAndPswd()
-        outPut?.logIn = {
-            if self.outPut?.currenUser != nil {
-                self.showButtonOut()
-                self.switcher = true
-        }
-        }
     }
     
     func showButtonOut() {
@@ -68,7 +62,10 @@ class LogInViewController: UIViewController {
     @objc func signOut () {
         outPut?.signOut()
         buttonOut.removeFromSuperview()
-        switcher = false
+        authorizedUser = false
+        UserDefaults.standard.setValue(authorizedUser, forKey: Keys.bool.rawValue)
+        textfieldOne.text = ""
+        textfieldTwo.text = ""
     }
     
     var stack: UIStackView = {
@@ -125,9 +122,9 @@ class LogInViewController: UIViewController {
     
     func disAbleButton() {
         if textfieldOne.text?.count == 0 && textfieldTwo.text?.count == 0 {
-            buyButton.isHidden = true
+            buyButton.isEnabled = false
         } else {
-            buyButton.isHidden = false
+            buyButton.isEnabled = true
         }
     }
     
@@ -143,12 +140,24 @@ class LogInViewController: UIViewController {
         return sv
     }()
     
-    var switcher: Bool = true
+    var authorizedUser: Bool = true
+
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if switcher != false {
+        let currentUser = UserDefaults.standard.bool(forKey: Keys.bool.rawValue)
+        
+        outPut?.logIn = {
+            if self.outPut?.currenUser != nil {
+                self.showButtonOut()
+                self.authorizedUser = true
+                UserDefaults.standard.setValue(self.authorizedUser, forKey: Keys.bool.rawValue)
+            }
+        }
+        
+        if currentUser == true {
             let models = outPut?.realmDataProvider?.obtains()
            
             textfieldOne.text = models?.last?.password
@@ -156,13 +165,13 @@ class LogInViewController: UIViewController {
             
             outPut?.email = textfieldTwo.text
             outPut?.pswd = textfieldOne.text
+            outPut?.typeEmailAndPswd()
             
         } else {
-            textfieldOne.text = " "
-            textfieldTwo.text = " "
+            textfieldOne.text = ""
+            textfieldTwo.text = ""
         }
-       
-        
+    
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)

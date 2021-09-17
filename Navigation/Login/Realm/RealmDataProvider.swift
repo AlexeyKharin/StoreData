@@ -15,23 +15,17 @@ protocol DataProvider {
 
 class RealmDataProvider: DataProvider {
     
-    var key: Data
-    
-    init(key: Data) {
-        self.key = key
-    }
-    
+
     func save(login: String, password: String) {
-        var config = Realm.Configuration(encryptionKey: key)
-        
+
         let usersData = UserData()
         usersData.login = login
         usersData.password = password
         
         do {
-            let realm = try Realm(configuration: config)
-            
-            try! realm.write {
+
+            let realm = try! Realm(configuration: .defaultConfiguration)
+            try realm.write {
                 realm.add(usersData)
             }
         } catch {
@@ -40,32 +34,22 @@ class RealmDataProvider: DataProvider {
     }
     
     func obtains() -> [UserData] {
-        
-        var config = Realm.Configuration(encryptionKey: key)
-        
+
         var  modelsObject = [UserData]()
-        
         do {
-            let realm = try Realm(configuration: config)
-            
+            let realm = try Realm(configuration: .defaultConfiguration)
             let models = realm.objects(UserData.self)
-            
             modelsObject = Array(models)
-            
-        } catch let error {
-            print(error.localizedDescription)
+        } catch {
+            fatalError("ОШИБКА")
         }
         return modelsObject
     }
     
     func delete(object: UserData) {
-        // Создаем конфигурацию для зашифрованной базы данных
-        var config = Realm.Configuration(encryptionKey: key)
-        
+        let realm = try! Realm(configuration: .defaultConfiguration)
         do {
-            let realm = try Realm(configuration: config)
-            
-            try! realm.write {
+            try realm.write {
                 realm.delete(object)
             }
         } catch {
