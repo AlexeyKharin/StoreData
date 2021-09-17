@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import UIKit
 
 class LogInViewController: UIViewController {

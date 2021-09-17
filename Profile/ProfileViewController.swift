@@ -68,7 +68,6 @@ class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
 }
 
 
