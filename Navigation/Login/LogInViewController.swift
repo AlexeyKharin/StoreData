@@ -1,7 +1,8 @@
+
 import UIKit
 
 class LogInViewController: UIViewController {
-    
+        
     var outPut: LoginViewControllerDelegate?
     
     var image: UIImageView = {
@@ -29,11 +30,6 @@ class LogInViewController: UIViewController {
     
     @objc func press () {
      outPut?.typeEmailAndPswd()
-        outPut?.logIn = {
-            if self.outPut?.currenUser != nil {
-                self.showButtonOut()
-        }
-        }
     }
     
     func showButtonOut() {
@@ -66,6 +62,11 @@ class LogInViewController: UIViewController {
     @objc func signOut () {
         outPut?.signOut()
         buttonOut.removeFromSuperview()
+        authorizedUser = false
+        UserDefaults.standard.setValue(authorizedUser, forKey: Keys.bool.rawValue)
+        textfieldOne.text = ""
+        textfieldTwo.text = ""
+
     }
     
     var stack: UIStackView = {
@@ -122,11 +123,12 @@ class LogInViewController: UIViewController {
     
     func disAbleButton() {
         if textfieldOne.text?.count == 0 && textfieldTwo.text?.count == 0 {
-            buyButton.isHidden = true
+            buyButton.isEnabled = false
         } else {
-            buyButton.isHidden = false
+            buyButton.isEnabled = true
         }
     }
+    
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.toAutoLayout()
@@ -139,10 +141,36 @@ class LogInViewController: UIViewController {
         return sv
     }()
     
+    var authorizedUser: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
+        
+        let currentUser = UserDefaults.standard.bool(forKey: Keys.bool.rawValue)
+        
+        outPut?.logIn = {
+            if self.outPut?.currenUser != nil {
+                self.showButtonOut()
+                self.authorizedUser = true
+                UserDefaults.standard.setValue(self.authorizedUser, forKey: Keys.bool.rawValue)
+            }
+        }
+        
+        if currentUser == true {
+            let models = outPut?.realmDataProvider?.obtains()
+           
+            textfieldOne.text = models?.last?.password
+            textfieldTwo.text = models?.last?.login
+            
+            outPut?.email = textfieldTwo.text
+            outPut?.pswd = textfieldOne.text
+            outPut?.typeEmailAndPswd()
+            
+        } else {
+            textfieldOne.text = ""
+            textfieldTwo.text = ""
+        }
+       
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)

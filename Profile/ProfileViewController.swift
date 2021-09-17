@@ -24,10 +24,10 @@ class ProfileViewController: UIViewController {
         if arrayPost.count != 0 {
             for i in arrayPost {
                 if let safetyDiscreption = i.discreption {
-                    
                     arrayString.append(safetyDiscreption)
                 }
             }
+            
             if !arrayString.contains(discreptionSafety) {
                 stack.createNewPost(image: imageSafety, likes: likesSafety, views: viewsSafety, discreption: discreptionSafety, title: titleSafety)
                 arrayString = []
