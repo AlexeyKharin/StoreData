@@ -44,11 +44,13 @@ class ViewPresenter: LoginViewControllerDelegate {
         guard let pswd = pswd else { return }
         guard let email = email else { return }
         
+
         let models = self.realmDataProvider?.obtains()
         
         if models?.count != 0 {
             if let model = models?.first(where: { $0.login == email }) {
                 self.realmDataProvider?.delete(object: model)
+
                 self.realmDataProvider?.save(login: email, password: pswd)
                 self.show()
                 self.logIn?()

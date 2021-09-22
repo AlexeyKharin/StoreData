@@ -14,12 +14,15 @@ protocol DataProvider {
 
 class RealmDataProvider: DataProvider {
     
+
     func save(login: String, password: String) {
+
         let usersData = UserData()
         usersData.login = login
         usersData.password = password
         
         do {
+
             let realm = try! Realm(configuration: .defaultConfiguration)
             try realm.write {
                 realm.add(usersData)
@@ -30,6 +33,7 @@ class RealmDataProvider: DataProvider {
     }
     
     func obtains() -> [UserData] {
+
         var  modelsObject = [UserData]()
         do {
             let realm = try Realm(configuration: .defaultConfiguration)

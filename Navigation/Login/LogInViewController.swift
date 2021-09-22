@@ -64,7 +64,6 @@ class LogInViewController: UIViewController {
         buttonOut.removeFromSuperview()
         textfieldOne.text = ""
         textfieldTwo.text = ""
-
     }
     
     var stack: UIStackView = {
@@ -145,6 +144,8 @@ class LogInViewController: UIViewController {
     }()
     
     var authorizedUser: Bool = true
+
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,7 +172,7 @@ class LogInViewController: UIViewController {
             textfieldOne.text = ""
             textfieldTwo.text = ""
         }
-       
+    
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
