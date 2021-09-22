@@ -1,11 +1,3 @@
-
-//  LoginInspector.swift
-//  Navigation
-//
-//  Created by Alexey Kharin on 21.04.2021.
-//  Copyright © 2021 Artem Novichkov. All rights reserved.
-
-
 import UIKit
 
 protocol Output {
@@ -45,6 +37,4 @@ class LoginInspector: Output {
             return false
         }
     }
-    
-    
 }

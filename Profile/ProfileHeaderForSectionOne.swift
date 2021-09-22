@@ -117,6 +117,7 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         button.addTarget(self, action: #selector(callGallaryPhotos), for: .touchUpInside)
         return button
     }()
+    
     @objc func callGallaryPhotos() {
         delegate?.openGallaryPhotosUINavigationController()
     }
@@ -130,7 +131,7 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         placeForCollection.addSubview(buttonPhotos)
         
         let constraints = [
-//
+
             backgruond.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgruond.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgruond.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -186,7 +187,6 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    //
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

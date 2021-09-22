@@ -62,8 +62,6 @@ class LogInViewController: UIViewController {
     @objc func signOut () {
         outPut?.signOut()
         buttonOut.removeFromSuperview()
-        authorizedUser = false
-        UserDefaults.standard.setValue(authorizedUser, forKey: Keys.bool.rawValue)
         textfieldOne.text = ""
         textfieldTwo.text = ""
     }
@@ -93,7 +91,7 @@ class LogInViewController: UIViewController {
         textField.returnKeyType = .done
         textField.autocapitalizationType = .words
         textField.placeholder = "Password"
-        textField.addTarget(self, action: #selector(savePswd), for: .editingChanged)
+        textField.addTarget(self, action: #selector(disAbleButton), for: .editingChanged)
         return textField
     }()
     
@@ -109,9 +107,10 @@ class LogInViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
         textField.backgroundColor = .systemGray6
         textField.returnKeyType = .done
+        textField.autocorrectionType = .no
         textField.autocapitalizationType = .words
         textField.placeholder = "Email of phone"
-        textField.addTarget(self, action: #selector(saveLogin), for: .editingChanged)
+        textField.addTarget(self, action: #selector(disAbleButton), for: .editingChanged)
         return textField
     }()
     
@@ -120,11 +119,15 @@ class LogInViewController: UIViewController {
         disAbleButton()
     }
     
-    func disAbleButton() {
-        if textfieldOne.text?.count == 0 && textfieldTwo.text?.count == 0 {
-            buyButton.isEnabled = false
-        } else {
+    @objc func disAbleButton() {
+
+        if let password = textfieldOne.text, let email = textfieldTwo.text, password.count > 3, email.count > 3 {
             buyButton.isEnabled = true
+            outPut?.email = textfieldTwo.text
+            outPut?.pswd = textfieldOne.text
+            
+        } else {
+            buyButton.isEnabled = false
         }
     }
     
@@ -146,15 +149,13 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        disAbleButton()
         let currentUser = UserDefaults.standard.bool(forKey: Keys.bool.rawValue)
         
         outPut?.logIn = {
-            if self.outPut?.currenUser != nil {
                 self.showButtonOut()
                 self.authorizedUser = true
                 UserDefaults.standard.setValue(self.authorizedUser, forKey: Keys.bool.rawValue)
-            }
         }
         
         if currentUser == true {
