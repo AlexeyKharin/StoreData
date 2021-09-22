@@ -90,6 +90,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
+  - KeychainAccess (4.2.2)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -105,6 +106,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - KeychainAccess
   - RealmSwift
 
 SPEC REPOS:
@@ -119,6 +121,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - KeychainAccess
     - nanopb
     - PromisesObjC
     - Realm
@@ -135,11 +138,12 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Realm: 39ff23f0f709cd4ed93eb47ee6593c2158945b38
   RealmSwift: 42713e09a8631070d6c12c3c5fb22b8edc1daa41
 
-PODFILE CHECKSUM: c2af712d9d50ba954ee23b6bbb2ac0d3f8c9354a
+PODFILE CHECKSUM: 6ec76c57c7281439f0a3234ef64057aa2aa65641
 
 COCOAPODS: 1.10.1

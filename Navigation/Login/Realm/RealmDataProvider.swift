@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import KeychainAccess
 
 protocol DataProvider {
     
@@ -11,19 +12,22 @@ protocol DataProvider {
     
 }
 
-
 class RealmDataProvider: DataProvider {
     
-
+    let keychain = Keychain(service: KeychainConfiguration.serviceName)
+    
+ 
     func save(login: String, password: String) {
-
+        
+        let key = keychain[AccessKey.oneKey.rawValue]?.data(using: .utf8)
+        let config = Realm.Configuration(encryptionKey: key)
+        
         let usersData = UserData()
         usersData.login = login
         usersData.password = password
         
         do {
-
-            let realm = try! Realm(configuration: .defaultConfiguration)
+            let realm = try! Realm(configuration: config)
             try realm.write {
                 realm.add(usersData)
             }
@@ -33,10 +37,13 @@ class RealmDataProvider: DataProvider {
     }
     
     func obtains() -> [UserData] {
-
+        
+        let key = keychain[AccessKey.oneKey.rawValue]?.data(using: .utf8)
+        let config = Realm.Configuration(encryptionKey: key)
+        
         var  modelsObject = [UserData]()
         do {
-            let realm = try Realm(configuration: .defaultConfiguration)
+            let realm = try Realm(configuration: config)
             let models = realm.objects(UserData.self)
             modelsObject = Array(models)
         } catch {
@@ -46,8 +53,12 @@ class RealmDataProvider: DataProvider {
     }
     
     func delete(object: UserData) {
-        let realm = try! Realm(configuration: .defaultConfiguration)
+        
+        let key = keychain[AccessKey.oneKey.rawValue]?.data(using: .utf8)
+        let config = Realm.Configuration(encryptionKey: key)
+        
         do {
+            let realm = try Realm(configuration: config)
             try realm.write {
                 realm.delete(object)
             }

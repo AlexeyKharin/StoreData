@@ -41,6 +41,7 @@
 		B4AC3FCD267654EF001D2E4A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC3FCC267654EF001D2E4A /* NetworkManager.swift */; };
 		B4AC3FD226768562001D2E4A /* Tatooine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC3FD126768562001D2E4A /* Tatooine.swift */; };
 		B4AC3FD5267685AE001D2E4A /* JsonSerializationToObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC3FD4267685AE001D2E4A /* JsonSerializationToObject.swift */; };
+		B4B8371826FBB64A0070A8DE /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B8371726FBB64A0070A8DE /* KeychainConfiguration.swift */; };
 		B4F08EE225DA7CED0061AE32 /* ProfileHeaderForSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */; };
 		B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */; };
 		B4F08EE525DA7CED0061AE32 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */; };
@@ -87,6 +88,7 @@
 		B4AC3FCC267654EF001D2E4A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B4AC3FD126768562001D2E4A /* Tatooine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tatooine.swift; sourceTree = "<group>"; };
 		B4AC3FD4267685AE001D2E4A /* JsonSerializationToObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonSerializationToObject.swift; sourceTree = "<group>"; };
+		B4B8371726FBB64A0070A8DE /* KeychainConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderForSectionOne.swift; sourceTree = "<group>"; };
 		B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B405A5E626B1D8B1000B95F4 /* RealmDataProvider.swift */,
+				B4B8371726FBB64A0070A8DE /* KeychainConfiguration.swift */,
 				B405A5ED26B1DECB000B95F4 /* UserData.swift */,
 			);
 			path = Realm;
@@ -370,6 +373,7 @@
 				B44C19EF26A5FF0700EED502 /* LikedContent+CoreDataProperties.swift in Sources */,
 				B42E4FAF26305B580025A4EF /* LoginInspector.swift in Sources */,
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
+				B4B8371826FBB64A0070A8DE /* KeychainConfiguration.swift in Sources */,
 				B4F08EE525DA7CED0061AE32 /* LogInViewController.swift in Sources */,
 				B45943EA25E2D406006B9345 /* CallPhotosCell.swift in Sources */,
 				B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */,
