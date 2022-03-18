@@ -14,7 +14,7 @@ class LogInViewController: UIViewController {
     
     lazy var buyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log in", for: .normal)
+        button.setTitle(NSLocalizedString("Log in", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayout()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -47,7 +47,7 @@ class LogInViewController: UIViewController {
 //    MARK:- Out from account
     lazy var buttonOut: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign Out", for: .normal)
+        button.setTitle(NSLocalizedString("Sign Out", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayout()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)

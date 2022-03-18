@@ -71,7 +71,6 @@ class CoreDataStack {
         newPost.discreption = discreption
         newPost.title = title
         save(context: context)
-        
     }
     
     private func save(context: NSManagedObjectContext) {

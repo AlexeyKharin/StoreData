@@ -1,0 +1,27 @@
+
+/* Class = "UITabBarItem"; title = "Feed"; ObjectID = "0HN-zR-0uF"; */
+"0HN-zR-0uF.title" = "Feed";
+
+/* Class = "UIBarButtonItem"; title = "Фильтр"; ObjectID = "6ed-VX-0ZG"; */
+"6ed-VX-0ZG.title" = "Фильтр";
+
+/* Class = "UIButton"; normalTitle = "Show alert"; ObjectID = "7My-cB-a4g"; */
+"7My-cB-a4g.normalTitle" = "Show alert";
+
+/* Class = "UINavigationItem"; title = "Feed"; ObjectID = "CTA-33-ygc"; */
+"CTA-33-ygc.title" = "Фиидконтроллер";
+
+/* Class = "UINavigationItem"; title = "Post"; ObjectID = "N0m-Za-SVh"; */
+"N0m-Za-SVh.title" = "Постконтроллер";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "SyK-iK-f7q"; */
+"SyK-iK-f7q.title" = "Profile";
+
+/* Class = "UITabBarItem"; title = "Liked"; ObjectID = "WME-sQ-QfS"; */
+"WME-sQ-QfS.title" = "Liked";
+
+/* Class = "UIBarButtonItem"; title = "Сброс фильтра "; ObjectID = "udk-62-UZw"; */
+"udk-62-UZw.title" = "Сброс фильтра ";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "wQU-pb-snS"; */
+"wQU-pb-snS.text" = "Title";

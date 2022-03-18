@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Navigation
-//
-//  Created by Artem Novichkov on 12.09.2020.
-//  Copyright © 2020 Artem Novichkov. All rights reserved.
-//
+
 import UIKit
 final class FeedViewController: UIViewController {
         
@@ -27,6 +21,28 @@ final class FeedViewController: UIViewController {
             ]
         NSLayoutConstraint.activate(constaints)
         
+    }
+    
+    var item: Int = 0
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    @IBAction func minusButton(_ sender: Any) {
+        item -= 1
+        showResult(itemsCount: item)
+    }
+    
+    @IBAction func plusButton(_ sender: Any) {
+        item += 1
+        showResult(itemsCount: item)
+    }
+    
+    func showResult(itemsCount: Int) {
+        
+        let formatString: String = NSLocalizedString("ACTION_ON_CALCULATIONS", comment: "Number of item to delete in plural configuration")
+        
+        let resultString = String.localizedStringWithFormat(formatString, itemsCount)
+        
+        resultLabel.text = resultString
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -33,7 +33,7 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         let button = UIButton(type: .system)
         button.backgroundColor = .blue
         print("button \(type(of: self))")
-        button.setTitle("Show status", for: .normal)
+        button.setTitle(NSLocalizedString("Show status", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
@@ -106,7 +106,7 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         label.textColor = .black
         label.toAutoLayout()
         label.backgroundColor = .white
-        label.text = "Photos"
+        label.text = NSLocalizedString("Photos", comment: "")
         return label
     }()
     

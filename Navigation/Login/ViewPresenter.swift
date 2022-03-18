@@ -43,8 +43,7 @@ class ViewPresenter: LoginViewControllerDelegate {
         
         guard let pswd = pswd else { return }
         guard let email = email else { return }
-        
-
+    
         let models = self.realmDataProvider?.obtains()
         
         if models?.count != 0 {

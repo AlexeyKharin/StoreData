@@ -23,7 +23,7 @@ class GallaryPhotosUINavigationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo Galery"
+        title = NSLocalizedString("Photo Galery", comment: "")
         view.backgroundColor = .white
         layout.scrollDirection = .vertical
         view.addSubview(collectionView)

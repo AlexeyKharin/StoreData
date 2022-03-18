@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ACTION_ON_CALCULATIONS</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items_count@</string>
+		<key>items_count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d  очков</string>
+			<key>one</key>
+			<string>%d  очко</string>
+			<key>two</key>
+			<string>%d  очка</string>
+			<key>three</key>
+			<string>%d  очка</string>
+			<key>four</key>
+			<string>%d  очка</string>
+			<key>five</key>
+			<string>%d  очков</string>
+			<key>six</key>
+			<string>%d  очков</string>
+			<key>seven</key>
+			<string>%d  очков</string>
+			<key>eight</key>
+			<string>%d  очков</string>
+			<key>nine</key>
+			<string>%d  очков</string>
+			<key>few</key>
+			<string>%d очка</string>
+			<key>many</key>
+			<string>%d  очков</string>
+			<key>other</key>
+			<string>%d  очков</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

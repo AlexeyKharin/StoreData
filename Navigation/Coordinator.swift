@@ -38,9 +38,8 @@ class Coordinator: NSObject {
 
             viewPresenter.realmDataProvider = realmDataProvider
             loginController.outPut = viewPresenter
-    
+
         }
-        
     }
 }
 
