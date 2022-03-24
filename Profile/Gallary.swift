@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 import UIKit
 
 struct Photo {

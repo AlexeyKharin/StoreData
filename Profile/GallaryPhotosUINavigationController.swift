@@ -8,7 +8,7 @@ class GallaryPhotosUINavigationController: UIViewController {
   
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customWhite
         collectionView.toAutoLayout()
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -24,9 +24,9 @@ class GallaryPhotosUINavigationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("Photo Galery", comment: "")
-        view.backgroundColor = .white
         layout.scrollDirection = .vertical
         view.addSubview(collectionView)
+        view.backgroundColor = .customWhite
     }
     
     
