@@ -17,11 +17,8 @@ class LogInViewController: UIViewController {
         button.setTitle(NSLocalizedString("Log in", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayout()
+        button.backgroundColor = .customBlue
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .disabled)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .selected)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .highlighted)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(press), for: .touchUpInside)
@@ -51,7 +48,8 @@ class LogInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayout()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
+//        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
+        button.backgroundColor = .customBlue
         button.layer.cornerRadius = 3
         button.contentHorizontalAlignment = .center
         button.layer.masksToBounds = true
@@ -173,7 +171,8 @@ class LogInViewController: UIViewController {
             textfieldTwo.text = ""
         }
     
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         [stack, buyButton, image].forEach { containerView.addSubview($0) }

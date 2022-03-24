@@ -24,14 +24,15 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
-        label.backgroundColor = .lightGray
+        label.textColor = .customeBlack
+        label.backgroundColor = .customGray
         label.toAutoLayout()
         return label
     }()
     
     lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .blue
+        button.backgroundColor = .customBlue
         print("button \(type(of: self))")
         button.setTitle(NSLocalizedString("Show status", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -55,7 +56,7 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = .gray
         label.toAutoLayout()
-        label.backgroundColor = .lightGray
+        label.backgroundColor = .customGray
         label.text = "Waiting for sonething..."
         return label
     }()
@@ -67,9 +68,10 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         textField.toAutoLayout()
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = UIColor.customeBlack.cgColor
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
+        textField.backgroundColor = UIColor(named: "backgroundColor")
         textField.addTarget(self, action: #selector(statusTextChanged(textFieldQ:)), for: .editingChanged)
         return textField
     }()
@@ -83,20 +85,21 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
     var backgruond: UIView = {
         let backgruond = UIView()
         backgruond.toAutoLayout()
-        backgruond.backgroundColor = .lightGray
+        backgruond.backgroundColor = .customGray
         return backgruond
     }()
     
     var placeForCollection: UIView = {
         let placeForCollection = UIView()
         placeForCollection.toAutoLayout()
-        placeForCollection.backgroundColor = .white
+        placeForCollection.backgroundColor = .customWhite
         return placeForCollection
     }()
     
     var collection: CallPfotosCell = {
         let collection = CallPfotosCell()
         collection.toAutoLayout()
+        collection.backgroundColor = .customWhite
         return collection
     }()
     
@@ -105,7 +108,8 @@ final class ProfileHeaderForSectionOne: UITableViewHeaderFooterView {
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black
         label.toAutoLayout()
-        label.backgroundColor = .white
+        label.backgroundColor = .customWhite
+        label.textColor = .customeBlack
         label.text = NSLocalizedString("Photos", comment: "")
         return label
     }()

@@ -8,7 +8,7 @@ final class CallPfotosCell: UIView,  UICollectionViewDelegateFlowLayout, UIColle
   
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customWhite
         collectionView.toAutoLayout()
         collectionView.dataSource = self
         collectionView.delegate = self

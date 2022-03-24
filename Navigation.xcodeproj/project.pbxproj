@@ -29,6 +29,9 @@
 		B437848F27E4DCB4008C9C54 /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = B437849127E4DCB4008C9C54 /* Info.strings */; };
 		B437849F27E4E74E008C9C54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B437849D27E4E74D008C9C54 /* Localizable.strings */; };
 		B43784A527E50E2A008C9C54 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = B43784A727E50E2A008C9C54 /* Localizable.stringsdict */; };
+		B43784AA27E872AD008C9C54 /* BlackMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43784A927E872AC008C9C54 /* BlackMode.swift */; };
+		B43784B227E87B3D008C9C54 /* AssetsColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B43784B127E87B3C008C9C54 /* AssetsColors.xcassets */; };
+		B43784B527E87F1A008C9C54 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43784B427E87F1A008C9C54 /* CustomColors.swift */; };
 		B44C19C126A4821500EED502 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44C19C026A4821500EED502 /* CoreDataStack.swift */; };
 		B44C19CD26A4ADB600EED502 /* LikedPostsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B44C19CB26A4ADB600EED502 /* LikedPostsModel.xcdatamodeld */; };
 		B44C19E526A4B61600EED502 /* LikedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44C19E426A4B61600EED502 /* LikedPostsViewController.swift */; };
@@ -80,6 +83,9 @@
 		B437849B27E4E034008C9C54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
 		B437849E27E4E74D008C9C54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B43784A627E50E2A008C9C54 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		B43784A927E872AC008C9C54 /* BlackMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackMode.swift; sourceTree = "<group>"; };
+		B43784B127E87B3C008C9C54 /* AssetsColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetsColors.xcassets; sourceTree = "<group>"; };
+		B43784B427E87F1A008C9C54 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		B44C19C026A4821500EED502 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B44C19CC26A4ADB600EED502 /* LikedPostsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikedPostsModel.xcdatamodel; sourceTree = "<group>"; };
 		B44C19E426A4B61600EED502 /* LikedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 				060782BA250CE27A00A87020 /* Assets.xcassets */,
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
+				B43784AF27E87B03008C9C54 /* ColorMode */,
 				B437849127E4DCB4008C9C54 /* Info.strings */,
 				B437849D27E4E74D008C9C54 /* Localizable.strings */,
 				B43784A727E50E2A008C9C54 /* Localizable.stringsdict */,
@@ -196,6 +203,16 @@
 				B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B43784AF27E87B03008C9C54 /* ColorMode */ = {
+			isa = PBXGroup;
+			children = (
+				B43784A927E872AC008C9C54 /* BlackMode.swift */,
+				B43784B427E87F1A008C9C54 /* CustomColors.swift */,
+				B43784B127E87B3C008C9C54 /* AssetsColors.xcassets */,
+			);
+			name = ColorMode;
 			sourceTree = "<group>";
 		};
 		B44C19BF26A481F200EED502 /* CoreDataPosts */ = {
@@ -315,6 +332,7 @@
 				B437848F27E4DCB4008C9C54 /* Info.strings in Resources */,
 				060782BB250CE27A00A87020 /* Assets.xcassets in Resources */,
 				060782B9250CE27700A87020 /* Main.storyboard in Resources */,
+				B43784B227E87B3D008C9C54 /* AssetsColors.xcassets in Resources */,
 				B43784A527E50E2A008C9C54 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,9 +399,11 @@
 				B44C19E526A4B61600EED502 /* LikedPostsViewController.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				B4F08EE625DA7CED0061AE32 /* ProfileViewController.swift in Sources */,
+				B43784B527E87F1A008C9C54 /* CustomColors.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				B44C19CD26A4ADB600EED502 /* LikedPostsModel.xcdatamodeld in Sources */,
 				B44C19EE26A5FF0700EED502 /* LikedContent+CoreDataClass.swift in Sources */,
+				B43784AA27E872AD008C9C54 /* BlackMode.swift in Sources */,
 				B44C19EF26A5FF0700EED502 /* LikedContent+CoreDataProperties.swift in Sources */,
 				B42E4FAF26305B580025A4EF /* LoginInspector.swift in Sources */,
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,

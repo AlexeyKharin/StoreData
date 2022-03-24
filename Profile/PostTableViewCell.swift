@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
@@ -22,7 +16,7 @@ class PostTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
+        label.textColor = .customeBlack
         label.numberOfLines = 2
         label.toAutoLayout()
         return label
@@ -48,7 +42,7 @@ class PostTableViewCell: UITableViewCell {
     private let viewLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
+        label.textColor = .customeBlack
         label.toAutoLayout()
         return label
     }()
@@ -56,7 +50,7 @@ class PostTableViewCell: UITableViewCell {
     private let likeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .black
+        label.textColor = .customeBlack
         label.toAutoLayout()
         return label
     }()
@@ -64,6 +58,7 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
+        contentView.backgroundColor = .customWhite
     }
     
     required init?(coder: NSCoder) {
