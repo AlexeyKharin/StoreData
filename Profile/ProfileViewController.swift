@@ -57,6 +57,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "ProfileView"
         view.backgroundColor = . white
         view.addSubview(tableView)
         let constraints = [

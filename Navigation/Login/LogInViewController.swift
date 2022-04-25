@@ -94,8 +94,9 @@ class LogInViewController: UIViewController {
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
-        textField.autocapitalizationType = .words
+        textField.delegate = self
         textField.placeholder = "Password"
+        textField.accessibilityIdentifier = "Password"
         textField.addTarget(self, action: #selector(disAbleButton), for: .editingChanged)
         return textField
     }()
@@ -106,13 +107,15 @@ class LogInViewController: UIViewController {
         print("textField \(type(of: self))")
         textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
         textField.backgroundColor = .systemGray6
-        textField.returnKeyType = .done
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .words
+        textField.returnKeyType = .continue
+        textField.delegate = self
         textField.placeholder = "Email of phone"
+        textField.accessibilityIdentifier = "Email"
+        textField.returnKeyType = .continue
         textField.addTarget(self, action: #selector(disAbleButton), for: .editingChanged)
         return textField
     }()
+    
     
     @objc func disAbleButton() {
 
@@ -126,7 +129,7 @@ class LogInViewController: UIViewController {
             buyButton.isEnabled = false
         }
     }
-    
+
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.toAutoLayout()
@@ -236,6 +239,22 @@ class LogInViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets = .zero
     }
 }
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+        case textfieldTwo:
+            textfieldOne.becomeFirstResponder()
+        case textfieldOne:
+            textfieldOne.resignFirstResponder()
+        default: break
+            
+        }
+        return true
+    }
+}
+
 extension UIView {
     func toAutoLayout() {
         self.translatesAutoresizingMaskIntoConstraints = false
