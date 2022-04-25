@@ -6,53 +6,39 @@ enum Keys: String {
     case bool
 }
 
-protocol LoginViewControllerDelegate {
-    
-    var realmDataProvider: DataProvider? { get set }
+protocol LoginMock {
     
     func show()
     
-    func typeEmailAndPswd()
+    func typeEmailAndPswd(email: String, pswd: String)
     
-    func signOut()
+    var userLogIn: ((Bool) -> Void)? {get set}
     
-    var logIn: (() -> Void)? {get set}
-    
-    var pswd: String? { get set }
-    
-    var email: String? { get set }
 }
 
-class ViewPresenter: LoginViewControllerDelegate {
-    
+class ViewPresenter: LoginMock {
+   
     var realmDataProvider: DataProvider?
     
-    var logIn: (() -> Void)?
-    
-    var pswd: String?
-    
-    var email: String?
+    var userLogIn: ((Bool) -> Void)?
     
     var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
-    func typeEmailAndPswd() {
-        
-        guard let pswd = pswd else { return }
-        guard let email = email else { return }
     
+    func typeEmailAndPswd(email: String, pswd: String) {
+        
         let models = self.realmDataProvider?.obtains()
         
         if models?.count != 0 {
             if let model = models?.first(where: { $0.login == email && $0.password == pswd}) {
                 self.realmDataProvider?.delete(object: model)
-
+                
                 self.realmDataProvider?.save(login: email, password: pswd)
                 self.show()
-                self.logIn?()
+                self.userLogIn?(true)
             } else {
                 createAccount(email: email, pswd: pswd)
             }
@@ -60,7 +46,6 @@ class ViewPresenter: LoginViewControllerDelegate {
             createAccount(email: email, pswd: pswd)
         }
     }
-    
     
     private func createAccount(email: String, pswd: String) {
         let alert = UIAlertController(title: "По логину аккаунт не создан", message: "Для создания аккаунта повторите пароль", preferredStyle: .alert)
@@ -72,13 +57,13 @@ class ViewPresenter: LoginViewControllerDelegate {
             guard let text = textField.text else { return }
             
             if text == pswd  {
-                    self.realmDataProvider?.save(login: email, password: pswd)
-                    self.show()
-                    self.logIn?()
+                self.realmDataProvider?.save(login: email, password: pswd)
+                self.show()
+                self.userLogIn?(true)
             } else {
                 let alertError = UIAlertController(title: "Ошибка", message: "Пароли не соотвествуют", preferredStyle: .alert)
                 let actionOk = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
-                    self?.signOut()
+                    self?.userLogIn?(false)
                 }
                 alertError.addAction(actionOk)
                 self.navigationController?.present(alertError, animated: true, completion: nil)
@@ -92,10 +77,6 @@ class ViewPresenter: LoginViewControllerDelegate {
         alert.addAction(actionContinue)
         alert.addAction(actionCancel)
         navigationController?.present(alert, animated: true, completion: nil)
-    }
-    
-    func signOut() {
-        UserDefaults.standard.setValue(false, forKey: Keys.bool.rawValue)
     }
     
     func show() {

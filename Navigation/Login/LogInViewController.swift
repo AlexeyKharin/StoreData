@@ -1,9 +1,16 @@
-
 import UIKit
 
 class LogInViewController: UIViewController {
         
-    var outPut: LoginViewControllerDelegate?
+    var outPut: LoginMock?
+    
+    var realmDataProvider: RealmDataProvider?
+    
+    var currentUser: Bool = false
+    
+    private var email: String?
+    
+    private var pswd: String?
     
     var image: UIImageView = {
         let image = UIImageView()
@@ -26,7 +33,9 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func press () {
-     outPut?.typeEmailAndPswd()
+        guard let email = email else { return }
+        guard let pswd = pswd else { return }
+        outPut?.typeEmailAndPswd(email: email, pswd: pswd)
     }
     
     func showButtonOut() {
@@ -40,7 +49,6 @@ class LogInViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-
 //    MARK:- Out from account
     lazy var buttonOut: UIButton = {
         let button = UIButton(type: .system)
@@ -48,8 +56,8 @@ class LogInViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayout()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-//        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
-        button.backgroundColor = .customBlue
+        button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
+        
         button.layer.cornerRadius = 3
         button.contentHorizontalAlignment = .center
         button.layer.masksToBounds = true
@@ -58,7 +66,7 @@ class LogInViewController: UIViewController {
     }()
     
     @objc func signOut () {
-        outPut?.signOut()
+        outPut?.userLogIn?(false)
         buttonOut.removeFromSuperview()
         textfieldOne.text = ""
         textfieldTwo.text = ""
@@ -76,7 +84,6 @@ class LogInViewController: UIViewController {
         return stack
     }()
     
-    
     lazy var textfieldOne: MyTextField = {
         let textField = MyTextField()
         textField.toAutoLayout()
@@ -93,11 +100,6 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    @objc func savePswd() {
-        outPut?.pswd = textfieldOne.text
-        disAbleButton()
-    }
-    
     lazy var textfieldTwo: MyTextField = {
         let textField = MyTextField()
         textField.toAutoLayout()
@@ -112,17 +114,13 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    @objc func saveLogin() {
-        outPut?.email = textfieldTwo.text
-        disAbleButton()
-    }
-    
     @objc func disAbleButton() {
 
         if let password = textfieldOne.text, let email = textfieldTwo.text, password.count > 3, email.count > 3 {
             buyButton.isEnabled = true
-            outPut?.email = textfieldTwo.text
-            outPut?.pswd = textfieldOne.text
+           
+            self.pswd = textfieldOne.text
+            self.email = textfieldTwo.text
             
         } else {
             buyButton.isEnabled = false
@@ -141,36 +139,34 @@ class LogInViewController: UIViewController {
         return sv
     }()
     
-    var authorizedUser: Bool = true
-
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        disAbleButton()
-        let currentUser = UserDefaults.standard.bool(forKey: Keys.bool.rawValue)
         
-        outPut?.logIn = {
-                self.showButtonOut()
-                self.authorizedUser = true
-                UserDefaults.standard.setValue(self.authorizedUser, forKey: Keys.bool.rawValue)
+        disAbleButton()
+        print(CurrentUser.value)
+        outPut?.userLogIn = { currentUser in
+            self.showButtonOut()
+            CurrentUser.value = currentUser
+            self.currentUser = CurrentUser.value
         }
         
         if currentUser == true {
-            let models = outPut?.realmDataProvider?.obtains()
-           
+            let models = realmDataProvider?.obtains()
+            
             textfieldOne.text = models?.last?.password
             textfieldTwo.text = models?.last?.login
+            email = textfieldTwo.text
+            pswd = textfieldOne.text
+            guard  let email = email else { return }
+            guard let pswd = pswd else { return }
             
-            outPut?.email = textfieldTwo.text
-            outPut?.pswd = textfieldOne.text
-            outPut?.typeEmailAndPswd()
+            outPut?.typeEmailAndPswd(email: email, pswd: pswd)
             
         } else {
             textfieldOne.text = ""
             textfieldTwo.text = ""
         }
-    
+        
         view.backgroundColor = UIColor(named: "backgroundColor")
         
         view.addSubview(scrollView)

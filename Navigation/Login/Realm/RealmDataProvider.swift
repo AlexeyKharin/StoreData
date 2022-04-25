@@ -15,7 +15,6 @@ protocol DataProvider {
 class RealmDataProvider: DataProvider {
     
     let keychain = Keychain(service: KeychainConfiguration.serviceName)
-    
  
     func save(login: String, password: String) {
         
