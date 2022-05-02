@@ -1,8 +1,11 @@
 import UIKit
+import UserNotifications
 
 class LogInViewController: UIViewController {
-        
+    
     var outPut: LoginMock?
+    
+    var notification: LocalNotificationsService?
     
     var realmDataProvider: RealmDataProvider?
     
@@ -49,7 +52,7 @@ class LogInViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-//    MARK:- Out from account
+    //    MARK:- Out from account
     lazy var buttonOut: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("Sign Out", comment: ""), for: .normal)
@@ -117,11 +120,12 @@ class LogInViewController: UIViewController {
     }()
     
     
+    
     @objc func disAbleButton() {
-
+        
         if let password = textfieldOne.text, let email = textfieldTwo.text, password.count > 3, email.count > 3 {
             buyButton.isEnabled = true
-           
+            
             self.pswd = textfieldOne.text
             self.email = textfieldTwo.text
             
@@ -129,7 +133,7 @@ class LogInViewController: UIViewController {
             buyButton.isEnabled = false
         }
     }
-
+    
     private let containerView: UIView = {
         let containerView = UIView()
         containerView.toAutoLayout()
@@ -144,7 +148,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.currentUser = CurrentUser.value
         disAbleButton()
         print(CurrentUser.value)
         outPut?.userLogIn = { currentUser in
@@ -164,7 +168,7 @@ class LogInViewController: UIViewController {
             guard let pswd = pswd else { return }
             
             outPut?.typeEmailAndPswd(email: email, pswd: pswd)
-            
+
         } else {
             textfieldOne.text = ""
             textfieldTwo.text = ""
@@ -223,6 +227,10 @@ class LogInViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if currentUser == true {
+            notification?.registeForLatestUpdatesIfPossible()
+        }
     }
     
     // MARK: Keyboard actions
@@ -281,4 +289,23 @@ class MyTextField: UITextField {
     }
 }
 
+protocol AlertNotification {
+    func showAlertNotification(title: String, message: String?, url: URL?, titleAction: String)
+}
 
+extension LogInViewController: AlertNotification {
+    func showAlertNotification(title: String, message: String?, url: URL?, titleAction: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: titleAction, style: .default) { (alert) in
+            if let url = url {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
