@@ -12,7 +12,7 @@ class Coordinator: NSObject {
     let keychain = Keychain(service: KeychainConfiguration.serviceName)
     
     @IBOutlet weak var tabBarController: UITabBarController!
-    
+
     private  let postPresenter = PostPresenter()
     
     private let realmDataProvider = RealmDataProvider()
@@ -28,6 +28,8 @@ class Coordinator: NSObject {
             keychain[AccessKey.oneKey.rawValue] = String(data: key, encoding: .utf8)
         }
         
+        let notification = LocalNotificationsService()
+        
         if let feedNavigationfirst = tabBarController.viewControllers?.first as? UINavigationController, let feedViewController = feedNavigationfirst.viewControllers.first as? FeedViewController {
             feedViewController.output = postPresenter
             postPresenter.navigationController = feedNavigationfirst
@@ -35,12 +37,14 @@ class Coordinator: NSObject {
         
         if let loginNavigation = tabBarController.viewControllers?[1] as? UINavigationController, let loginController = loginNavigation.viewControllers.last as? LogInViewController {
             let viewPresenter = ViewPresenter(navigationController: loginNavigation)
-
             viewPresenter.realmDataProvider = realmDataProvider
             loginController.outPut = viewPresenter
             loginController.realmDataProvider = realmDataProvider
-
+            notification.delegateAlertNotification = loginController
+            loginController.notification = notification
         }
     }
+    //
+        
 }
 

@@ -14,6 +14,7 @@ final class FeedViewController: UIViewController {
             guard let self = self else { return }
             self.output?.showPost()
         }
+        
         let constaints = [
         stack.topAnchor.constraint(equalTo: view.topAnchor, constant:300),
         stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
