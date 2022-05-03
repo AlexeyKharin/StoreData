@@ -60,6 +60,7 @@
 		B4DF7C0E281F338400396632 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF7C0D281F338400396632 /* NotificationViewController.swift */; };
 		B4DF7C11281F338400396632 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4DF7C0F281F338400396632 /* MainInterface.storyboard */; };
 		B4DF7C15281F338400396632 /* CustomNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B4DF7C07281F338300396632 /* CustomNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B4DF7C242821225000396632 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF7C232821224F00396632 /* LocalAuthorizationService.swift */; };
 		B4F08EE225DA7CED0061AE32 /* ProfileHeaderForSectionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */; };
 		B4F08EE325DA7CED0061AE32 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */; };
 		B4F08EE525DA7CED0061AE32 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */; };
@@ -170,6 +171,7 @@
 		B4DF7C0D281F338400396632 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B4DF7C10281F338400396632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B4DF7C12281F338400396632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4DF7C232821224F00396632 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		B4F08EDC25DA7CEC0061AE32 /* ProfileHeaderForSectionOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderForSectionOne.swift; sourceTree = "<group>"; };
 		B4F08EDD25DA7CEC0061AE32 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B4F08EDF25DA7CEC0061AE32 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				B4AC3FC726763F1F001D2E4A /* NetworkService.swift */,
+				B4DF7C232821224F00396632 /* LocalAuthorizationService.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				B42E4FC62631703A0025A4EF /* Coordinator.swift */,
 				B4AC3FCB267654A4001D2E4A /* JSON.Codable */,
@@ -708,6 +711,7 @@
 				B4DF7C02281C133D00396632 /* LocalNotificationsService.swift in Sources */,
 				B44C19C126A4821500EED502 /* CoreDataStack.swift in Sources */,
 				B42E4FCD2632CE950025A4EF /* ViewPresenter.swift in Sources */,
+				B4DF7C242821225000396632 /* LocalAuthorizationService.swift in Sources */,
 				B45943E425E2D400006B9345 /* GallaryPhotosUINavigationController.swift in Sources */,
 				B42E4FB526307ECF0025A4EF /* PostPresenter.swift in Sources */,
 				B44C19EA26A5FE0300EED502 /* ImageTransformer.swift in Sources */,
