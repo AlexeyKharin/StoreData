@@ -28,7 +28,6 @@ struct NetworkService {
     }
 }
 
-
 enum AppConfiguration {
     case configOne(URL)
     case configTwo(URL)

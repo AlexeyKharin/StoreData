@@ -3,6 +3,8 @@ import UserNotifications
 
 class LogInViewController: UIViewController {
     
+    var authorizationService = LocalAuthorizationService()
+    
     var outPut: LoginMock?
     
     var notification: LocalNotificationsService?
@@ -19,6 +21,14 @@ class LogInViewController: UIViewController {
         let image = UIImageView()
         image.image = UIImage(named: "logo")
         image.toAutoLayout()
+        
+        return image
+    }()
+    
+    lazy var biometryImage: UIImageView = {
+        let image = UIImageView()
+        image.image = biometry(type: authorizationService.usedBiometryType())
+        
         return image
     }()
     
@@ -35,6 +45,50 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    lazy var buttonAuthorization: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitleColor(.white, for: .normal)
+        button.toAutoLayout()
+        button.backgroundColor = .customBlue
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        button.setImage(biometryImage.image!.applyingSymbolConfiguration(.init(scale: .large))!.withTintColor(.white).withRenderingMode(.alwaysOriginal), for:.normal)
+        button.addTarget(self, action: #selector(faceOrTouchID), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    func biometry(type: BiometryType) -> UIImage {
+        switch type {
+        
+        case .dontSupportBiometry:
+            return UIImage(systemName: "stop.circle.fill") ?? UIImage()
+            
+        case .faceId:
+            return UIImage(systemName: "faceid") ?? UIImage()
+            
+        case .touchId:
+            return UIImage(systemName: "touchid") ?? UIImage()
+        }
+    }
+    
+    @objc func faceOrTouchID() {
+        authorizationService.authorizeIfPossible { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.outPut?.show()
+                    
+                case .failure(error: let error):
+                    self.showAlertAuthorization(title: "Ошибка при аутентификации", message: "Попробуйте снова")
+                    
+                case .featureFailure:
+                    self.showAlertAuthorization(title: "Недоступно", message: "Данный инструмент не доуступен")
+                }
+            }
+        }
+    }
     @objc func press () {
         guard let email = email else { return }
         guard let pswd = pswd else { return }
@@ -60,7 +114,6 @@ class LogInViewController: UIViewController {
         button.toAutoLayout()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1), for: .normal)
-        
         button.layer.cornerRadius = 3
         button.contentHorizontalAlignment = .center
         button.layer.masksToBounds = true
@@ -168,7 +221,7 @@ class LogInViewController: UIViewController {
             guard let pswd = pswd else { return }
             
             outPut?.typeEmailAndPswd(email: email, pswd: pswd)
-
+            
         } else {
             textfieldOne.text = ""
             textfieldTwo.text = ""
@@ -178,7 +231,7 @@ class LogInViewController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
-        [stack, buyButton, image].forEach { containerView.addSubview($0) }
+        [stack, buyButton, image, buttonAuthorization].forEach { containerView.addSubview($0) }
         stack.addArrangedSubview(textfieldTwo)
         stack.addArrangedSubview(textfieldOne)
         
@@ -207,7 +260,13 @@ class LogInViewController: UIViewController {
             buyButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             buyButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             buyButton.heightAnchor.constraint(equalToConstant: 50),
-            buyButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            
+            buttonAuthorization.topAnchor.constraint(equalTo: buyButton.bottomAnchor, constant: 16),
+            buttonAuthorization.centerXAnchor.constraint(equalTo: buyButton.centerXAnchor),
+            buttonAuthorization.widthAnchor.constraint(equalToConstant: 50),
+            buttonAuthorization.heightAnchor.constraint(equalToConstant: 50),
+            
+            buttonAuthorization.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
             
         ]
         NSLayoutConstraint.activate(constraints)
@@ -306,6 +365,17 @@ extension LogInViewController: AlertNotification {
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
         
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LogInViewController {
+    
+    func showAlertAuthorization(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Закрыть", style: .cancel, handler: nil)
+        
+        alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
 }
